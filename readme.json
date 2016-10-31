@@ -1,0 +1,12 @@
+
+All these are using lite server and node
+
+Angular:
+
+npm install
+npm start
+
+
+Javascript:
+npm init
+npm  run dev
