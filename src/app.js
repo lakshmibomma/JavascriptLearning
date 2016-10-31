@@ -4,8 +4,19 @@ class Drone
     constructor(id,name)
     {
         //instance properties
-        this.id = id;
+        this._id = id;
         this.name = name;
+    }
+
+    //Getter
+    get id()
+    {
+        return this._id + ' Temporary';
+    }
+    //setter
+    set id(value)
+    {
+        this._id = value;
     }
 
     /********Methods*********/
@@ -29,7 +40,8 @@ console.log(Drone.getCompany());
 
 //Instance access
 let drone = new Drone('A123','Flyer');
-console.log(drone.id);
+drone.id = '12345'; //setting value
+console.log(drone.id); //getting value
 console.log(drone.name);
 drone.fly();
 
