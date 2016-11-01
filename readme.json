@@ -10,3 +10,6 @@ npm start
 Javascript:
 npm init
 npm  run dev
+
+To install some package:
+ npm install -save material-design-lite
