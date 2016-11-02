@@ -13,3 +13,6 @@ npm  run dev
 
 To install some package:
  npm install -save material-design-lite
+
+//style guide
+ https://getmdl.io

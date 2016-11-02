@@ -6,7 +6,13 @@ import $ from 'jquery';
 import {Button} from './ui/button.js';
 import {Image} from './ui/image.js';
 import {TitleBar} from './ui/title-bar.js';
+import {DataTable} from './ui/data-table.js';
 
+let headers = "License Make Model Miles".split(' ');
+let dataService =  new FleetDataService(fleet);
+dataService.loadData(fleet);
+let dt =  new DataTable(headers,dataService.cars);
+dt.appendToElement($('body'));
 
 // let b = new Button('Click Me');
 // b.appendToElement($('body'));
@@ -14,15 +20,13 @@ import {TitleBar} from './ui/title-bar.js';
 // let i = new Image('../images/drone.jpg');
 // i.appendToElement($('body'));
 
-let tb = new TitleBar('Our Application');
-tb.addLink('Home','');
-tb.addLink('Cars','');
-tb.addLink('Drones','');
-tb.addLink('Maps','');
+// let tb = new TitleBar('Our Application');
+// tb.addLink('Home','');
+// tb.addLink('Cars','');
+// tb.addLink('Drones','');
+// tb.addLink('Maps','');
 
-tb.appendToElement($('body'));
-
-
+// tb.appendToElement($('body'));
 
 
 // let dataService = new FleetDataService();
