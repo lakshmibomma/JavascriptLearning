@@ -1,15 +1,14 @@
 import {BaseElement} from './base-element.js';
 
-export class DataTable extends BaseElement
- {
-    constructor(headers,data) 
-    {
+export class DataTable extends BaseElement {
+    
+    constructor(headers, data) {
         super();
         this.headers = headers;
         this.data = data;
     }
     
-   getElementString() {
+    getElementString() {
         
         let thTags = '';
         for (let h of this.headers) {
@@ -20,8 +19,7 @@ export class DataTable extends BaseElement
         for (let row of this.data) {
             trTags += `<tr>`;
             let tdTags = '';
-            for (let property of this.headers) 
-            {
+            for (let property of this.headers) {
                 let field = row[property.toLowerCase()];
                 trTags += `<td class="mdl-data-table__cell--non-numeric">
                              ${field}
@@ -45,4 +43,5 @@ export class DataTable extends BaseElement
 
         `;
     }
+    
 }

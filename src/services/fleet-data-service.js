@@ -2,42 +2,35 @@ import {Car} from '../classes/car.js';
 import {Drone} from '../classes/drone.js';
 import {DataError} from './data-error.js';
 
+export class FleetDataService {
 
-
-export class FleetDataService
-{
-    constructor()
-    {
+    constructor() {
         this.cars = [];
-        this.drones = [];
-        this.errors = [];
+        this.drones = []; 
+        this.errors = [];       
+    }    
+    
+    getCarByLicense(license) {
+        return this.cars.find(function(car) {
+            return car.license === license;
+        });
     }
-
-    filterCarsByMake(filter)
-    {
-        return this.cars.filter(car => car.make.indexOf(filter) >= 0);
-    }
-
-    getCarsSortedByLicense()
-    {
-        return this.cars.sort(function(car1,car2){
+    
+    getCarsSortedByLicense() {
+        return this.cars.sort(function(car1, car2) {
             if (car1.license < car2.license)
-             return -1;
+                return -1;
             if (car1.license > car2.license)
-             return 1;
+                return 1;
             return 0;
         });
     }
-    getCarByLicense(license)
-    {
-        return this.cars.find(function(car)
-        {
-            return car.license === license;
-
-        });
+    
+    filterCarsByMake(filter) {
+        return this.cars.filter(car => car.make.indexOf(filter) >= 0);
     }
-
-  loadData(fleet) {
+    
+    loadData(fleet) {
         for (let data of fleet) {
             switch(data.type) {
                 case 'car':
@@ -72,15 +65,6 @@ export class FleetDataService
             this.errors.push(new DataError('error loading car', car));
         }
         return null;
-    }
-     
-
-    loadDrone(drone)
-    {
-        let d =  new Drone(drone.license,drone.model,drone.latlong);
-        d.airTimeHours = drone.airTimeHours;
-        d.base = drone.base;
-        return d;
     }
     
     validateCarData(car) {
